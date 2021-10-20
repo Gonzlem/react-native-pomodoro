@@ -64,49 +64,49 @@ export default function App() {
   }, [isRunning, timeSpent]);
 
   // Handle session timers
-  function decrementSessionTime() {
+  const decrementSessionTime = () => {
     const newSessionTime =
       sessionTime - 60 > 60 * 25 ? sessionTime - 60 : 60 * 25;
     setSessionTime(newSessionTime);
   }
 
-  function incrementSessionTime() {
+  const incrementSessionTime = () => {
     const newSessionTime =
       sessionTime + 60 <= 60 * 180 ? sessionTime + 60 : 60 * 180;
     setSessionTime(newSessionTime);
   }
 
   // Handle break timers
-  function decrementBreakTime() {
+  const decrementBreakTime = () => {
     const newBreakTime = breakTime - 60 > 60 ? breakTime - 60 : 60;
     setBreakTime(newBreakTime);
   }
 
-  function incrementBreakTime() {
+  const incrementBreakTime = () => {
     const newBreakTime = breakTime + 60 <= 60 * 60 ? breakTime + 60 : 60 * 60;
     setBreakTime(newBreakTime);
   }
 
   // Handle rounds of sessions
-  function decrementRounds() {
+  const decrementRounds = () => {
     if (roundsCount >= 2) setRoundsCount(roundsCount - 1);
   }
 
-  function incrementRounds() {
+  const incrementRounds = () => {
     if (roundsCount < 10) setRoundsCount(roundsCount + 1);
   }
 
-  // 
-  function startTimer() {
+  //
+  const startTimer = () => {
     setIsRunning(!isRunning); // Set the "running" flag to the opposite of the current
     toggleStartButton();
   }
 
-  function toggleStartButton() {
+  const toggleStartButton = () => {
     setButtonText(buttonText === "Start!" ? "Stop!" : "Start!");
   }
 
-  function resetPomodoro() {
+  const resetPomodoro = () => {
     setBreakTime(5 * 60);
     setSessionTime(25 * 60);
     setTimeLeft(breakMode === false ? sessionTime * 1000 : breakTime * 1000);
@@ -119,7 +119,7 @@ export default function App() {
     }
   }
 
-  function countSession() {
+  const countSession = () => {
     if (breakMode) setSessionCount(sessionCount + 1);
   }
 
